@@ -43,11 +43,14 @@ class geo_json_data():
                          for idx in range(len(self.dataJson['features']))}
         pass
 
-    def __getitem__(self, zipcode):  # geo_json_data[i]
+    def __getitem__(self, zipcode):
         '''
         zipcode is a int,tuple, or list of zipcodes
         If any item in zipcodes is in our lsit we will return a geo_json_data object,
         or will return None if zipcode is not in geodata list
+        exmaple usage:
+        #geo_json_data[zipcode]
+        #geo_json_data[[zipcode1,zipcode2]]
         '''
         # this should return a geo_json_data object containing the specified keys
         assert isinstance(zipcode,

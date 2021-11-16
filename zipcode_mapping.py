@@ -72,3 +72,6 @@ class Zipcode_Mapping:
         if fname.exists():
             with open(fname, 'rb') as f:
                 self.zipcodes = pickle.load(f)
+                return True
+        else:
+            return False

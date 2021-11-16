@@ -9,7 +9,7 @@ class Map:
     '''
 
     def __init__(self, geojson_file_path=str(r'./data/State-zip-code-GeoJSON/')):
-        assert isinstance(geojson_file_path, (pathlib.Path, str)),"geojson fiel path must be appropriate type"
+        assert isinstance(geojson_file_path, (pathlib.Path, str)),"geojson file path must be appropriate type"
         if isinstance(geojson_file_path, str):
             geojson_file_path = pathlib.Path(geojson_file_path)
         assert geojson_file_path.exists(),"file path must exist"+str(geojson_file_path)
@@ -22,7 +22,7 @@ class Map:
     def make_map(self, listOfMaps,mapTitle):
         '''
         make and save the folium map
-        :param listOfMaps: list[list[str,pd.DataFrame,zipcodeColumn,valueColumn]] unique zipcodes
+        :param listOfMaps: list[list[layerTitleStr,pd.DataFrame,zipcodeColumnStr,valueColumnStr]] unique zipcodes
         :return:
         '''
         assert isinstance(listOfMaps,list)
@@ -32,15 +32,17 @@ class Map:
         for mapping in listOfMaps:
             assert isinstance(mapping,list)
             layerTitle = mapping[0]
-            filteredGeodata = self.geodata[mapping[1].keys()]
-            mapVals = [mapping[1][i] for i in filteredGeodata.zipcodes]
+            filteredGeodata = self.geodata[mapping[1][mapping[2]].values]
+            mapping[1]['regionidzip'] = mapping[1]['regionidzip'].astype(str)
+            #mapVals = [mapping[1][i] for i in filteredGeodata.zipcodes]
+
 
             folium.Choropleth(
                 # geo_data=geodata[zhZips['regionidzip'].unique()].dataJson,
                 geo_data=filteredGeodata.dataJson,
                 name="choropleth",
-                data=mapVals,
-                columns=[mapping[3], mapping[4]],
+                data=mapping[1],
+                columns=[mapping[2], mapping[3]],
                 key_on="feature.properties.ZCTA5CE10",
                 fill_color="YlGn",
                 fill_opacity=0.7,
