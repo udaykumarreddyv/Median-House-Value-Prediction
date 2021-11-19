@@ -13,7 +13,7 @@ def clean_data(fname, plots=False):
     plots: Draw a bar plot of the % of missing values, if true
     returns: clean dataframe
     '''
-    assert isinstance(fname, str) and fname[len(fname)-4:]=='.csv', 'Input filename must be a csv file'
+    assert isinstance(fname, str) and fname[len(fname)-4:]=='.csv', 'Input must be a csv file'
     
     # read in the csv file
     pd.options.display.float_format = '{:,.3f}'.format
@@ -65,6 +65,8 @@ def change_df_dtypes(df):
     df : dataframe
     returns: A new dataframe with fixed datatypes
     '''
+    assert isinstance(df, pd.DataFrame)
+    
     from sklearn import preprocessing
     for c, dtype in zip(df.columns, df.dtypes):
         if dtype == 'float64':
