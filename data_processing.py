@@ -3,14 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from sklearn import preprocessing
 
-MISSING_PERCENT_THRESHOLD = 95
-
-def clean_data(fname, plots=False):
+def clean_data(fname, percent_threshold=95, plots=False):
     '''
     Read data, find missing values and reduce feature set
     df : data frame
-    plots: Draw a bar plot of the % of missing values, if true
+    plots: Draw a bar plot of the % of missing values, if true. Defaults to False
     returns: clean dataframe
     '''
     assert isinstance(fname, str) and fname[len(fname)-4:]=='.csv', 'Input must be a csv file'
@@ -22,7 +21,7 @@ def clean_data(fname, plots=False):
 
     #find missing data info
     missing_df = show_missing_value_stats(data, showplot=plots)
-    filtered_cols = missing_df[missing_df['percent_missing'] > MISSING_PERCENT_THRESHOLD].field.tolist()
+    filtered_cols = missing_df[missing_df['percent_missing'] > percent_threshold].field.tolist()
     data.drop(filtered_cols, axis=1, inplace=True)
 
     #Identify categorical and numerical features in the data frame. Shouldn't hardcode column names(????)
@@ -59,15 +58,15 @@ def clean_data(fname, plots=False):
     #remove rows with null values
     return data.dropna(how='any',axis=0)
 
+
 def change_df_dtypes(df):
     '''
     Fixes datatype issues in the dataframe
-    df : dataframe
+    df : dataframe with input data
     returns: A new dataframe with fixed datatypes
     '''
     assert isinstance(df, pd.DataFrame)
     
-    from sklearn import preprocessing
     for c, dtype in zip(df.columns, df.dtypes):
         if dtype == 'float64':
             df[c] = df[c].astype(np.float32) 
@@ -79,7 +78,8 @@ def change_df_dtypes(df):
             df[c] = label.transform(list(df[c].values))
     return df
 
-# Function to analyse missing values. To be used later
+
+# Function to analyse missing values
 def show_missing_value_stats(df, showplot=False):
     '''
     Provide information of missing data in the dataframe
