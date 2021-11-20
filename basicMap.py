@@ -30,58 +30,51 @@ if __name__ == "__main__":
     mapData['regionidzip'] = mapData['regionidzip'].astype('int')
 
     ############################price vs house size##########################################
-    zillowHousing1 = pathlib.Path(r'./data/zillowHousing/pricevssizeofHouse.csv')
-    zhData1 = pd.read_csv(zillowHousing1)
-    zhData1['regionidzip'] = zhData1['regionidzip'].astype('int')
-    zhData1['regionidzip'] = zhData1['regionidzip'].map(zm.zipcodes)
+
+  
     #normalize data
-    zhData1['priceVsHouseSize'] = ((zhData1['priceVsHouseSize']-zhData1['priceVsHouseSize'].min())/
-                                 (zhData1['priceVsHouseSize'].max()-zhData1['priceVsHouseSize'].min()))
+    zhData['priceVsHouseSize'] = ((zhData['priceVsHouseSize']-zhData['priceVsHouseSize'].min())/
+                                 (zhData['priceVsHouseSize'].max()-zhData['priceVsHouseSize'].min()))
     #zhData1[['regionidzip','priceVsHouseSize']]
 
-    mapData1 = zhData1[['regionidzip', 'priceVsHouseSize']].dropna().groupby(by='regionidzip').mean().reset_index()
+    mapData1 = zhData[['regionidzip', 'priceVsHouseSize']].dropna().groupby(by='regionidzip').mean().reset_index()
     mapData1 = pd.DataFrame(mapData1)
     mapData1['regionidzip'] = mapData1['regionidzip'].astype('int')
 
     ###########################price vs Year Built##############################################
-    zillowHousing2 = pathlib.Path(r'./data/zillowHousing/pricevsYearBuilt.csv')
-    zhData2 = pd.read_csv(zillowHousing2)
-    zhData2['regionidzip'] = zhData2['regionidzip'].astype('int')
-    zhData2['regionidzip'] = zhData2['regionidzip'].map(zm.zipcodes)
+   
+    
+
     #normalize data
-    zhData2['priceVsYearBuilt'] = ((zhData2['priceVsYearBuilt']-zhData2['priceVsYearBuilt'].min())/
-                                 (zhData2['priceVsYearBuilt'].max()-zhData2['priceVsYearBuilt'].min()))
+    zhData['priceVsYearBuilt'] = ((zhData['priceVsYearBuilt']-zhData['priceVsYearBuilt'].min())/
+                                 (zhData['priceVsYearBuilt'].max()-zhData['priceVsYearBuilt'].min()))
    
 
-    mapData2 = zhData2[['regionidzip', 'priceVsYearBuilt']].dropna().groupby(by='regionidzip').mean().reset_index()
+    mapData2 = zhData[['regionidzip', 'priceVsYearBuilt']].dropna().groupby(by='regionidzip').mean().reset_index()
     mapData2 = pd.DataFrame(mapData2)
     mapData2['regionidzip'] = mapData2['regionidzip'].astype('int')
 
     ###########################price vs Year Built##############################################
-    zillowHousing2 = pathlib.Path(r'./data/zillowHousing/pricevsbedroomcount.csv')
-    zhData2 = pd.read_csv(zillowHousing2)
-    zhData2['regionidzip'] = zhData2['regionidzip'].astype('int')
-    zhData2['regionidzip'] = zhData2['regionidzip'].map(zm.zipcodes)
+    #zhData['regionidzip'] = zhData['regionidzip'].astype('int')
+    #zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
     #normalize data
-    zhData2['priceVsbedRoomCount'] = ((zhData2['priceVsbedRoomCount']-zhData2['priceVsbedRoomCount'].min())/
-                                 (zhData2['priceVsbedRoomCount'].max()-zhData2['priceVsbedRoomCount'].min()))
+    zhData['priceVsbedRoomCount'] = ((zhData['priceVsbedRoomCount']-zhData['priceVsbedRoomCount'].min())/
+                                 (zhData['priceVsbedRoomCount'].max()-zhData['priceVsbedRoomCount'].min()))
    
 
-    mapData3 = zhData2[['regionidzip', 'priceVsbedRoomCount']].dropna().groupby(by='regionidzip').mean().reset_index()
+    mapData3 = zhData[['regionidzip', 'priceVsbedRoomCount']].dropna().groupby(by='regionidzip').mean().reset_index()
     mapData3 = pd.DataFrame(mapData3)
     mapData3['regionidzip'] = mapData3['regionidzip'].astype('int')
 
     ###########################sizeofhouse vs bedroomcount##############################################
-    zillowHousing2 = pathlib.Path(r'./data/zillowHousing/sizeofhousevsbedroomcount.csv')
-    zhData2 = pd.read_csv(zillowHousing2)
-    zhData2['regionidzip'] = zhData2['regionidzip'].astype('int')
-    zhData2['regionidzip'] = zhData2['regionidzip'].map(zm.zipcodes)
-    #normalize data
-    zhData2['sizeOfHouseVsbedRoomCount'] = ((zhData2['sizeOfHouseVsbedRoomCount']-zhData2['sizeOfHouseVsbedRoomCount'].min())/
-                                 (zhData2['sizeOfHouseVsbedRoomCount'].max()-zhData2['sizeOfHouseVsbedRoomCount'].min()))
-   
 
-    mapData4 = zhData2[['regionidzip', 'sizeOfHouseVsbedRoomCount']].dropna().groupby(by='regionidzip').mean().reset_index()
+    #zhData['regionidzip'] = zhData['regionidzip'].astype('int')
+    #zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
+    #normalize data
+    zhData['sizeOfHouseVsbedRoomCount'] = ((zhData['sizeOfHouseVsbedRoomCount']-zhData['sizeOfHouseVsbedRoomCount'].min())/
+                                 (zhData['sizeOfHouseVsbedRoomCount'].max()-zhData['sizeOfHouseVsbedRoomCount'].min()))
+   
+    mapData4 = zhData[['regionidzip', 'sizeOfHouseVsbedRoomCount']].dropna().groupby(by='regionidzip').mean().reset_index()
     mapData4 = pd.DataFrame(mapData4)
     mapData4['regionidzip'] = mapData4['regionidzip'].astype('int')
 
