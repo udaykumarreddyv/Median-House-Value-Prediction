@@ -17,7 +17,7 @@ if __name__ == "__main__":
     HeatValues.price_vs_yearBuilt(zhData)
     HeatValues.price_vs_bedRoomCount(zhData)
     HeatValues.sizeOfHouse_vs_bedRoomCount(zhData)
-
+    
     
     zhData['regionidzip'] = zhData['regionidzip'].astype('int')
     zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
@@ -30,8 +30,6 @@ if __name__ == "__main__":
     mapData['regionidzip'] = mapData['regionidzip'].astype('int')
 
     ############################price vs house size##########################################
-
-  
     #normalize data
     zhData['priceVsHouseSize'] = ((zhData['priceVsHouseSize']-zhData['priceVsHouseSize'].min())/
                                  (zhData['priceVsHouseSize'].max()-zhData['priceVsHouseSize'].min()))
@@ -42,9 +40,6 @@ if __name__ == "__main__":
     mapData1['regionidzip'] = mapData1['regionidzip'].astype('int')
 
     ###########################price vs Year Built##############################################
-   
-    
-
     #normalize data
     zhData['priceVsYearBuilt'] = ((zhData['priceVsYearBuilt']-zhData['priceVsYearBuilt'].min())/
                                  (zhData['priceVsYearBuilt'].max()-zhData['priceVsYearBuilt'].min()))
@@ -55,9 +50,7 @@ if __name__ == "__main__":
     mapData2['regionidzip'] = mapData2['regionidzip'].astype('int')
 
     ###########################price vs Year Built##############################################
-    #zhData['regionidzip'] = zhData['regionidzip'].astype('int')
-    #zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
-    #normalize data
+
     zhData['priceVsbedRoomCount'] = ((zhData['priceVsbedRoomCount']-zhData['priceVsbedRoomCount'].min())/
                                  (zhData['priceVsbedRoomCount'].max()-zhData['priceVsbedRoomCount'].min()))
    
@@ -68,21 +61,62 @@ if __name__ == "__main__":
 
     ###########################sizeofhouse vs bedroomcount##############################################
 
-    #zhData['regionidzip'] = zhData['regionidzip'].astype('int')
-    #zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
-    #normalize data
     zhData['sizeOfHouseVsbedRoomCount'] = ((zhData['sizeOfHouseVsbedRoomCount']-zhData['sizeOfHouseVsbedRoomCount'].min())/
                                  (zhData['sizeOfHouseVsbedRoomCount'].max()-zhData['sizeOfHouseVsbedRoomCount'].min()))
    
     mapData4 = zhData[['regionidzip', 'sizeOfHouseVsbedRoomCount']].dropna().groupby(by='regionidzip').mean().reset_index()
     mapData4 = pd.DataFrame(mapData4)
     mapData4['regionidzip'] = mapData4['regionidzip'].astype('int')
+#####################one bedroom prices###############################
+    zhData=pd.read_csv(zillowHousing)
+    HeatValues.onebedroomhouses(zhData)
+    zillowHousing1 = pathlib.Path(r'./data/zillowHousing/onebedroom.csv',index=False)
+    zhData=pd.read_csv(zillowHousing1)
+    print(type(zhData))
+    zhData['regionidzip'] = zhData['regionidzip'].astype('int')
+    zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
+    zhData['taxvaluedollarcnt1'] = ((zhData['taxvaluedollarcnt1']-zhData['taxvaluedollarcnt1'].min())/
+                                (zhData['taxvaluedollarcnt1'].max()-zhData['taxvaluedollarcnt1'].min()))
+   
+    mapData5 = zhData[['regionidzip', 'taxvaluedollarcnt1']].dropna().groupby(by='regionidzip').mean().reset_index()
+    mapData5 = pd.DataFrame(mapData5)
+    mapData5['regionidzip'] = mapData5['regionidzip'].astype('int')
+    #############two bedroom prices##################################
+    zhData=pd.read_csv(zillowHousing)
+    HeatValues.twobedroomhouses(zhData)
+    zillowHousing1 = pathlib.Path(r'./data/zillowHousing/twobedroom.csv',index=False)
+    zhData=pd.read_csv(zillowHousing1)
+    zhData['regionidzip'] = zhData['regionidzip'].astype('int')
+    zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
+    zhData['taxvaluedollarcnt2'] = ((zhData['taxvaluedollarcnt2']-zhData['taxvaluedollarcnt2'].min())/
+                                 (zhData['taxvaluedollarcnt2'].max()-zhData['taxvaluedollarcnt2'].min()))
+   
+    mapData6 = zhData[['regionidzip', 'taxvaluedollarcnt2']].dropna().groupby(by='regionidzip').mean().reset_index()
+    mapData6 = pd.DataFrame(mapData6)
+    mapData6['regionidzip'] = mapData6['regionidzip'].astype('int')
 
+    
+    #############three bedroom prices##################################
+    zhData=pd.read_csv(zillowHousing)
+    HeatValues.threebedroomhouses(zhData)
+    zillowHousing1 = pathlib.Path(r'./data/zillowHousing/threebedroom.csv',index=False)
+    zhData=pd.read_csv(zillowHousing1)
+    zhData['regionidzip'] = zhData['regionidzip'].astype('int')
+    zhData['regionidzip'] = zhData['regionidzip'].map(zm.zipcodes)
+    zhData['taxvaluedollarcnt3'] = ((zhData['taxvaluedollarcnt3']-zhData['taxvaluedollarcnt3'].min())/
+                                 (zhData['taxvaluedollarcnt3'].max()-zhData['taxvaluedollarcnt3'].min()))
+   
+    mapData7 = zhData[['regionidzip', 'taxvaluedollarcnt3']].dropna().groupby(by='regionidzip').mean().reset_index()
+    mapData7 = pd.DataFrame(mapData7)
+    mapData7['regionidzip'] = mapData7['regionidzip'].astype('int')
 
 ##############################3     Map Creation #############################################
     basicMap.make_map([["housevalues", mapData, 'regionidzip', 'taxvaluedollarcnt',"housevalues","YlGn"],
                        ["sizeofhouse", mapData1, 'regionidzip', 'priceVsHouseSize',"sizeofhousevsprice","RdPu"],
                        ["priceVsYearBuilt", mapData2, 'regionidzip', 'priceVsYearBuilt',"priceVsYearBuilt","OrRd"],
                        ["priceVsbedRoomCount", mapData3, 'regionidzip', 'priceVsbedRoomCount',"priceVsbedRoomCount","PuBuGn"],
-                       ["sizeOfHouseVsbedRoomCount", mapData4, 'regionidzip', 'sizeOfHouseVsbedRoomCount',"sizeOfHouseVsbedRoomCount","YlOrBr"]], "Heat_Maps_Comparisons.html")
+                       ["sizeOfHouseVsbedRoomCount", mapData4, 'regionidzip', 'sizeOfHouseVsbedRoomCount',"sizeOfHouseVsbedRoomCount","YlOrBr"],
+                       ["One Bedroom prices", mapData5, 'regionidzip', 'taxvaluedollarcnt1',"One Bedroom prices","RdPu"],
+                       ["Two Bedroom prices", mapData6, 'regionidzip', 'taxvaluedollarcnt2',"Two Bedroom prices","YlOrBr"],
+                       ["Three Bedroom prices", mapData7, 'regionidzip', 'taxvaluedollarcnt3',"Three Bedroom prices","PuBuGn"]], "Heat_Maps_Comparisons.html")
     

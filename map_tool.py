@@ -31,7 +31,6 @@ class Map:
         # This assumes that the ordering in zipcodes is consistent (which it is because they are ordered lists
         for mapping in listOfMaps:
             assert isinstance(mapping,list)
-            print(mapping[0],mapping[2],mapping[3],mapping[4],mapping[5])
             layerTitle = mapping[0]
             filteredGeodata = self.geodata[mapping[1][mapping[2]].values]
             mapping[1]['regionidzip'] = mapping[1]['regionidzip'].astype(str)
