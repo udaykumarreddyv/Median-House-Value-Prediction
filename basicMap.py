@@ -84,5 +84,5 @@ if __name__ == "__main__":
                        ["sizeofhouse", mapData1, 'regionidzip', 'priceVsHouseSize',"sizeofhousevsprice","RdPu"],
                        ["priceVsYearBuilt", mapData2, 'regionidzip', 'priceVsYearBuilt',"priceVsYearBuilt","OrRd"],
                        ["priceVsbedRoomCount", mapData3, 'regionidzip', 'priceVsbedRoomCount',"priceVsbedRoomCount","PuBuGn"],
-                       ["sizeOfHouseVsbedRoomCount", mapData4, 'regionidzip', 'sizeOfHouseVsbedRoomCount',"sizeOfHouseVsbedRoomCount","YlOrBr"]], "House_Values.html")
+                       ["sizeOfHouseVsbedRoomCount", mapData4, 'regionidzip', 'sizeOfHouseVsbedRoomCount',"sizeOfHouseVsbedRoomCount","YlOrBr"]], "Heat_Maps_Comparisons.html")
     
