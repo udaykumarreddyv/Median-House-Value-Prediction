@@ -17,7 +17,7 @@ git clone https://github.com/udayvarikuti/Median-House-Value-Prediction.git
 
 Setup the environment using the environment.yaml file
 ```
-conda env create -f environment.yml
+conda env create -f environment.yaml
 ```
 
 ## Visualization
