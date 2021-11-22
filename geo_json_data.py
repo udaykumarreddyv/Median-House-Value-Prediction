@@ -80,7 +80,6 @@ class geo_json_data():
         '''
         assert isinstance(other, geo_json_data), "addition must be between geo_json_data objects"
         temp = copy.deepcopy(self.dataJson)
-        # print(temp)
         out = [i for i in temp['features']]
         for i in other.dataJson['features']:
             if i not in out:
