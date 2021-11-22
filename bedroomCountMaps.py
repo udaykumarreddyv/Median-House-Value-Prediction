@@ -10,8 +10,6 @@ def makeMap(lower=1,upper=99, mapName="BedroomCount.html"):
     zm = Zipcode_Mapping()
     assert zm.load_mapping(), "mapping can't be loaded"
     bedroomMap = Map(zipcode_map_zipcodes=list(zm.zipcodes.values()))
-    print("accessible zipcodes:")
-    print(bedroomMap.geodata.zipcodes)
     print("loading dataset")
     zillowHousing = pathlib.Path(r'./datastories_table.csv')
     zhData = pd.read_csv(zillowHousing)

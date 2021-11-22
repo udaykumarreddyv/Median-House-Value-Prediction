@@ -31,8 +31,6 @@ def makeMap(lower, upper, mapName="HousingSeverity.html"):
     # Calc price vs house size built
     zhData['priceVsHouseSize'] = zhData['taxvaluedollarcnt'] / zhData['calculatedfinishedsquarefeet']
     pVSF = remove_upper_lower(zhData, 'priceVsHouseSize', lower, upper)
-    print("PVSF: ",len(pVSF))
-    print("PVSF: ",pVSF['priceVsHouseSize'])
     # Calc prics vs squareft
     zhData['priceVsbedRoomCount'] = zhData['taxvaluedollarcnt'] / zhData['bedroomcnt']
     pVNB = remove_upper_lower(zhData, 'priceVsbedRoomCount', lower, upper)
@@ -71,4 +69,4 @@ def makeMap(lower, upper, mapName="HousingSeverity.html"):
 
 
 if __name__ == "__main__":
-    makeMap(lower=5,upper=95,mapName="HousingSeverity_5.html")
+    makeMap(lower=5, upper=95, mapName="HousingSeverity_5.html")
