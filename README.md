@@ -32,7 +32,7 @@ The Visualization of maps uses the files
 <br>
 The map_tool.py generates the map. All the above mentioned files call the exampleMap.py, bedroomCountMaps.py and severityMaps.py files internally to generate the folium map.
 
-<ul>
+
 Requires outside libraries:
 <ul>
     <li>General</li>
@@ -60,7 +60,7 @@ Requires outside libraries:
     </ul>
     
 </ul>
-</ul>
+
 Must have the following data saved in the current directory
 <ul>
     <li>"./data/zillowHousing/clean_data_2016.csv"</li>
