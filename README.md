@@ -1,5 +1,5 @@
 # Median-House-Value-Prediction
-Group project for UCSD EC-143
+Group project for UCSD ECE-143
 
 ## Installation
 
