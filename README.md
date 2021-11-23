@@ -94,7 +94,7 @@ Requires outside libraries:
         <li>joblib</li>
         <li>statsmodels</li>
     </ul>
-    
+</ul>    
 Must have the following data saved in the current directory
 <ul>
     <li>"./data/zillowHousing/clean_data_2016.csv"</li>
