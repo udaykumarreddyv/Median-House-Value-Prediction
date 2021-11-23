@@ -76,3 +76,30 @@ Must have the following data saved in the current directory
             <li>Used to map zillow internal fake zipcodes to real life zipcodes. Genreated via geopy</li>
         </ul>
 </ul>
+
+## Model Training
+
+Model training of this project experimented with two models: Multiple linear regression and random forest regression. 
+During model training, it uses the clean_data_2016.csv and outputs datastories_table.csv.
+
+Requires outside libraries:
+<ul>
+    <li>General</li>
+    <ul>
+        <li>Pandas</li>
+        <li>Numpy</li>
+        <li>Scipy</li>
+        <li>sklearn</li>
+        <li>pickle</li>
+        <li>joblib</li>
+        <li>statsmodels</li>
+    </ul>
+    
+Must have the following data saved in the current directory
+<ul>
+    <li>"./data/zillowHousing/clean_data_2016.csv"</li>
+        <ul>
+            <li>Zillow data used for model training</li>
+        </ul>
+</ul>
+
