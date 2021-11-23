@@ -30,9 +30,9 @@ The Visualization of maps uses the files
 <li>bedroomCountMaps.py</li>
 <li>eda.py</li>
 <br>
-The map_tool.py generates the map. All the above mentioned files call the exampleMap.py, bedroomCountMaps.py and severityMaps.py files internally to generate the folium map.<br>
+The map_tool.py generates the map. All the above mentioned files call the exampleMap.py, bedroomCountMaps.py and severityMaps.py files internally to generate the folium map.
 
-
+<ul>
 Requires outside libraries:
 <ul>
     <li>General</li>
@@ -47,7 +47,6 @@ Requires outside libraries:
             <li>pickle</li>
             <li>Seaborn</li>
             <li>sklearn</li>
-            <li></li>
         </ul>
     <li>Model</li>
     <ul>
@@ -61,7 +60,7 @@ Requires outside libraries:
     </ul>
     
 </ul>
-
+</ul>
 Must have the following data saved in the current directory
 <ul>
     <li>"./data/zillowHousing/clean_data_2016.csv"</li>
