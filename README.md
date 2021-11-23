@@ -30,8 +30,8 @@ The Visualization of maps uses the files
 <li>bedroomCountMaps.py</li>
 <li>eda.py</li>
 <br>
-The map_tool.py generates the map. All the above mentioned files call the exampleMap.py, bedroomCountMaps.py and severityMaps.py files internally to generate the folium map.
-
+The map_tool.py generates the map. The files exampleMap.py, bedroomCountMaps.py and severityMaps.py call the map_tool.py file internally to generate the folium map.
+<br>
 
 Requires outside libraries:
 <ul>
