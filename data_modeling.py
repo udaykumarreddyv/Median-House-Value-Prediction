@@ -95,16 +95,16 @@ def data_modeling():
     print("Minimum Average MSE = ", min([sum(mse_multiple_linear_regression)/10, sum(mse_random_forest_regression)/10]))
 
     # Plot the Average Mean Squared Error's of each model.
-    plt.scatter(range(1, 10 + 1), mse_random_forest_regression, marker='o', color='blue',
+    # plt.scatter(range(1, 10 + 1), mse_random_forest_regression, marker='o', color='blue',
                 label='Random Forest Regression')
-    plt.scatter(range(1, 10 + 1), mse_multiple_linear_regression, marker='o', color='green',
+    # plt.scatter(range(1, 10 + 1), mse_multiple_linear_regression, marker='o', color='green',
                 label='Multiple Linear Regreesion')
-    plt.title('MSE of Random Forest Regression versus Multiple Linear Regression')
-    plt.xlabel('Iteration # of K-Fold Cross Distribution')
-    plt.xticks(range(1, 10 + 1))
-    plt.ylabel('Mean-Squared Error')
-    plt.legend()
-    plt.grid()
+    # plt.title('MSE of Random Forest Regression versus Multiple Linear Regression')
+    # plt.xlabel('Iteration # of K-Fold Cross Distribution')
+    # plt.xticks(range(1, 10 + 1))
+    # plt.ylabel('Mean-Squared Error')
+    # plt.legend()
+    # plt.grid()
 
     ### Part 3: Based on the results above, we conclude that random forest regressor is the better model.
     # Save the model to local and save the model as a pickle in a file
@@ -149,7 +149,7 @@ def data_modeling():
     # Normality test for two bedroom and two bathroom:
     stat, p = normaltest(data.head(5000).loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].calculatedfinishedsquarefeet)
 
-    ax = sns.displot(
+    # ax = sns.displot(
         data.head(5000).loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].calculatedfinishedsquarefeet)
 
     # As seen in the diagram, the distribution is not normal, we use median as approximate housing size for two bedroom
@@ -163,7 +163,7 @@ def data_modeling():
     stat, p = normaltest(
         data.head(5000).loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].calculatedfinishedsquarefeet)
 
-    ax = sns.displot(
+    # ax = sns.displot(
         data.head(5000).loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].calculatedfinishedsquarefeet)
 
     # As seen in the diagram, the distribution is not normal, we use median as approximate housing size for one bedroom
@@ -178,7 +178,7 @@ def data_modeling():
     stat, p = normaltest(
         data.head(5000).loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].calculatedfinishedsquarefeet)
 
-    ax = sns.displot(
+    # ax = sns.displot(
         data.head(5000).loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].calculatedfinishedsquarefeet)
 
     # As seen in the diagram, the distribution is not normal, we use median as approximate housing size for three bedroom
@@ -200,20 +200,20 @@ def data_modeling():
         return data.loc[data.regionidzip == zipcode].longitude.mean()
 
     # For yearbuilt
-    ax = sns.displot(data.head(5000).loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].yearbuilt)
+    # ax = sns.displot(data.head(5000).loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].yearbuilt)
 
     median_year_built_33 = data.loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].yearbuilt.median()
 
-    ax = sns.displot(data.head(5000).loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].yearbuilt)
+    # ax = sns.displot(data.head(5000).loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].yearbuilt)
 
     median_year_built_22 = data.loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].yearbuilt.median()
 
-    ax = sns.displot(data.head(5000).loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].yearbuilt)
+    # ax = sns.displot(data.head(5000).loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].yearbuilt)
 
     median_year_built_11 = data.loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].yearbuilt.median()
 
     # For poolcnt
-    ax = sns.displot(data.head(5000).poolcnt)
+    # ax = sns.displot(data.head(5000).poolcnt)
 
     # Time to build our sample space for data stories!
     ds_X = []
