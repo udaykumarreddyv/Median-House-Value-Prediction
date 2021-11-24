@@ -80,7 +80,7 @@ Must have the following data saved in the current directory
 ## Model Training
 
 Model training of this project experimented with two models: multiple linear regressor and random forest regressor. 
-During model training, it uses the clean_data_2016.csv and outputs the prediction table datastories_table.csv using random forest regressor because it outperforms multiple linear regressor. 
+During model training, it uses the clean_data_2016.csv and outputs the prediction table datastories_table.csv using random forest regressor because it outperforms multiple linear regressor. Please be cautious that running this py will take a significant time dependent on your processor.
 
 Requires outside libraries:
 <ul>
@@ -95,7 +95,7 @@ Requires outside libraries:
         <li>statsmodels</li>
     </ul>
 </ul>    
-Must have the following data saved in the current directory
+Must have the following data saved in the current directory where the this py is located.
 <ul>
     <li>"./data/zillowHousing/clean_data_2016.csv"</li>
         <ul>
