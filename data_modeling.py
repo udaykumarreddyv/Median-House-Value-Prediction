@@ -90,9 +90,9 @@ def data_modeling():
         K += 1
 
     ### Part 2: Report the Average Mean Squared Error of each model.
-    print("Average MSE Multiple Linear Regression = ", sum(mse_multiple_linear_regression) / 10)
-    print("Average MSE Random Forest Regression = ", sum(mse_random_forest_regression) / 10)
-    print("Minimum Average MSE = ", min([sum(mse_multiple_linear_regression)/10, sum(mse_random_forest_regression)/10]))
+    # print("Average MSE Multiple Linear Regression = ", sum(mse_multiple_linear_regression) / 10)
+    # print("Average MSE Random Forest Regression = ", sum(mse_random_forest_regression) / 10)
+    # print("Minimum Average MSE = ", min([sum(mse_multiple_linear_regression)/10, sum(mse_random_forest_regression)/10]))
 
     # Plot the Average Mean Squared Error's of each model.
     # plt.scatter(range(1, 10 + 1), mse_random_forest_regression, marker='o', color='blue',
@@ -117,13 +117,13 @@ def data_modeling():
     # knn_from_joblib.predict(X_test)
 
     # Only load the model once
-    rf_from_joblib = joblib.load('my_rfr.pkl')
-    rf_from_joblib.predict(np.array([0, 0, 0, 0, 0, 0, 0, 0]).reshape(1, -1))
+    # rf_from_joblib = joblib.load('my_rfr.pkl')
+    
 
     # Repeat for Multiple Linear Regression model
     joblib.dump(multiple_linear_formula_model, 'my_mlfr.pkl')
-    mlfr_from_joblib = joblib.load('my_mlfr.pkl')
-    mlfr_from_joblib.predict(np.array([0, 0, 0, 0, 0, 0, 0, 0]).reshape(1, -1))
+    # mlfr_from_joblib = joblib.load('my_mlfr.pkl')
+    # mlfr_from_joblib.predict(np.array([0, 0, 0, 0, 0, 0, 0, 0]).reshape(1, -1))
 
     ### Part 4: Use the model to predict the Median Home Value for 3 separate data stories.
     # To make our data stories relatable, we choose three fundamental family options:
@@ -146,28 +146,19 @@ def data_modeling():
     mean_two_two = data.loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].calculatedfinishedsquarefeet.mean()
     median_two_two = data.loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].calculatedfinishedsquarefeet.median()
 
-    # Normality test for two bedroom and two bathroom:
-    stat, p = normaltest(data.head(5000).loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].calculatedfinishedsquarefeet)
-
-    # ax = sns.displot(
-        data.head(5000).loc[(data.bathroomcnt == 2.0) & (data.bedroomcnt == 2.0)].calculatedfinishedsquarefeet)
-
-    # As seen in the diagram, the distribution is not normal, we use median as approximate housing size for two bedroom
-    # and two bathroom housing.
+   
+   
 
     # One bedroom, one bathroom housing:
     mean_one_one = data.loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].calculatedfinishedsquarefeet.mean()
     median_one_one = data.loc[
         (data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].calculatedfinishedsquarefeet.median()
 
-    stat, p = normaltest(
-        data.head(5000).loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].calculatedfinishedsquarefeet)
+   
 
-    # ax = sns.displot(
-        data.head(5000).loc[(data.bathroomcnt == 1.0) & (data.bedroomcnt == 1.0)].calculatedfinishedsquarefeet)
+    
 
-    # As seen in the diagram, the distribution is not normal, we use median as approximate housing size for one bedroom
-    # and one bathroom housing.
+    
 
     # Three bedrooms and three bathrooms:
     mean_three_three = data.loc[
@@ -175,17 +166,10 @@ def data_modeling():
     median_three_three = data.loc[
         (data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].calculatedfinishedsquarefeet.median()
 
-    stat, p = normaltest(
-        data.head(5000).loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].calculatedfinishedsquarefeet)
-
-    # ax = sns.displot(
-        data.head(5000).loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].calculatedfinishedsquarefeet)
-
-    # As seen in the diagram, the distribution is not normal, we use median as approximate housing size for three bedroom
-    # and two bathroom housing.
+    
 
     # For latitude and longitude
-    # ax = sns.displot(data.head(5000).loc[(data.bathroomcnt == 3.0) & (data.bedroomcnt == 3.0)].calculatedfinishedsquarefeet)
+    
 
     def zip_average_lat(zipcode):
         '''
