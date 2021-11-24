@@ -10,6 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 import pickle
 import joblib
 from scipy.stats import normaltest
+import os.path
 
 
 def data_modeling():
@@ -24,7 +25,6 @@ def data_modeling():
     are a 1 Bedroom/1 Bathroom home for a working professional, 2 Bedroom/2 Bathroom home for a working professional
     who wants to share with a roommate, and a 3 Bedroom/3 Bathroom home for a nuclear family (two parents and two
     children).
-
     :return: CSV containing Median House Value for 3 different data stories for a list of zip codes.
     '''
 
@@ -50,7 +50,8 @@ def data_modeling():
 
     K = 0  # Iteration of K-Fold
     P = 8  # Number of predictors
-
+    
+    print('start model training')
     for train_index, test_index in kf.split(data_part1):
         # print("TRAIN:", train_index, "TEST:", test_index)
         data_train, data_test = data_part1.iloc[list(train_index), :], data_part1.iloc[list(test_index), :]
@@ -96,9 +97,9 @@ def data_modeling():
 
     # Plot the Average Mean Squared Error's of each model.
     # plt.scatter(range(1, 10 + 1), mse_random_forest_regression, marker='o', color='blue',
-                label='Random Forest Regression')
+#                label='Random Forest Regression')
     # plt.scatter(range(1, 10 + 1), mse_multiple_linear_regression, marker='o', color='green',
-                label='Multiple Linear Regreesion')
+#                label='Multiple Linear Regreesion')
     # plt.title('MSE of Random Forest Regression versus Multiple Linear Regression')
     # plt.xlabel('Iteration # of K-Fold Cross Distribution')
     # plt.xticks(range(1, 10 + 1))
@@ -133,7 +134,6 @@ def data_modeling():
 
     # For each zipcode, we create three corresponding samples, each of which has eight features. The squarefeet for
     # each housing option, we used the data from
-    # https://www.rentcafe.com/blog/rental-market/real-estate-news/us-average-apartment-size-trends-downward/
     # a. For two bedrooms, two bathrooms apartment, the average squarefeet is 1030
     # b. For one bedroom, one bathroom apartment, the average squarefeet is 722
     # c. For three bedroom, two bathroom apartment, the average squarefeet is 1300
@@ -225,4 +225,12 @@ def data_modeling():
                                           'latitude', 'longitude', 'poolcnt', 'regionidzip', 'yearbuilt',
                                           'taxvaluedollarcnt'])
 
-    final.to_csv('datastories_table.csv')
+    if os.path.exists('./datastories_table.csv') == False:
+        final.to_csv('datastories_table.csv')
+    else:
+        print('datastories_table.csv already exists.')
+
+
+#    final.to_csv('datastories_table.csv')
+
+
