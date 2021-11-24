@@ -79,8 +79,8 @@ Must have the following data saved in the current directory
 
 ## Model Training
 
-Model training of this project experimented with two models: Multiple linear regression and random forest regression. 
-During model training, it uses the clean_data_2016.csv and outputs datastories_table.csv.
+Model training of this project experimented with two models: multiple linear regressor and random forest regressor. 
+During model training, it uses the clean_data_2016.csv and outputs the prediction table datastories_table.csv using random forest regressor because it outperforms multiple linear regressor. 
 
 Requires outside libraries:
 <ul>
