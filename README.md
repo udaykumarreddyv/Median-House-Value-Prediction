@@ -1,5 +1,10 @@
-# Median-House-Value-Prediction
-Group project for UCSD ECE-143
+# Group #1: Median-House-Value-Prediction
+### Group project for UCSD ECE-143.
+Analyze the [Zillow Zestimate](https://www.kaggle.com/c/zillow-prize-1/data) dataset for trends and interesting pieces of information. We created a workflow to process and clean the Kaggle dataset, and then created a wrapper around the Folium library to create standardized maps to analyze different ratios or features of the dataset averaged by zipcode. The interesting parts come from finding the right features and ratios to visualize. 
+
+We created a regression model to predict house prices by features supplied in our dataset. We used this model to infer values by holding many of the features constant and only changing the lat/long and zipcode of each inferance. This data can then be visualized by our map tool to see how the data changes with respect to zipcode.
+
+The rest of the README explaisn how to reproduce our results.
 
 ## Installation
 
