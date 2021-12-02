@@ -113,3 +113,12 @@ Must have the following data saved in the current directory where the this py is
         </ul>
 </ul>
 
+## References
+<ul>
+    <li>Zillow Housing data: https://www.kaggle.com/c/zillow-prize-1/data</li>
+    <li>GeoJSON data: https://github.com/OpenDataDE/State-zip-code-GeoJSON</li>
+    <li>US Census Data, number of houses built: https://www.census.gov/construction/bps/</li>
+    <li>CA population data: https://www.dof.ca.gov/Forecasting/Demographics/Estimates/</li>
+    <li>California Historical Housing Units: https://cbia.org/housing-statistics/</li>
+    <li>Population growth has outpaced home construction for 20 years: https://usafacts.org/articles/population-growth-has-outpaced-home-construction-for-20-years/</li>
+</ul>
