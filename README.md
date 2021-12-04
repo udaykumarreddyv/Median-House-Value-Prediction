@@ -92,6 +92,8 @@ Must have the following data saved in the current directory
 Model training of this project experimented with two models: multiple linear regressor and random forest regressor. 
 During model training, it uses the clean_data_2016.csv and outputs the prediction table datastories_table.csv using random forest regressor because it outperforms multiple linear regressor. Please be cautious that running this py will take a significant time dependent on your processor.
 
+Instructions to run model training: To perform the model training, run the "data_modeling.py" python file with the "clean_data_2016.csv file in the same repository.
+
 Requires outside libraries:
 <ul>
     <li>General</li>
